@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594857740621",
+    "project_id": "neo-whatsupp",
+    "storage_bucket": "neo-whatsupp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594857740621:android:09eda345076af9734dcf04",
+        "android_client_info": {
+          "package_name": "com.example.whatsupp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594857740621-tt00h1448hf4t76v3iafd3fagravof35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs-LyrUW33rRkap9kZPR1Qc6B0vPEX-2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594857740621-tt00h1448hf4t76v3iafd3fagravof35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
