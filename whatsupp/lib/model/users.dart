@@ -5,11 +5,21 @@ class users {
   String? avatar;
   String nom = '';
   String prenom = '';
-  String? mail;
+  String mail = '';
   String token ='';
   String tel = '';
   bool isConnected = false;
 
+  users(DocumentSnapshot snapshot){
+    id = snapshot.id;
+    Map<String,dynamic> map = snapshot.data() as Map<String,dynamic>;
+    nom = map["NOM"];
+    prenom = map["PRENOM"];
+    mail = map["MAIL"];
+    token = map["TOKEN"];
+    avatar = map["AVATAR"];
+  }
+  users.vide();
   
 }
 String token(int len){
