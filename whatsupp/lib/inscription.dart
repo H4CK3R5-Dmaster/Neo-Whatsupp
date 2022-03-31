@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:whatsupp/acceuil.dart';
+import 'package:whatsupp/functions/firebaseHelp.dart';
+
 
 class inscription extends StatefulWidget {
+  
   @override
   State<StatefulWidget> createState() {
     return inscriptionState();
@@ -8,6 +12,12 @@ class inscription extends StatefulWidget {
 }
 
 class inscriptionState extends State<inscription> {
+  late String mail;
+  late String tel;
+  late String nom;
+  late String prenom;
+  late String mdp;
+  late String mdpconfirm;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +46,9 @@ class inscriptionState extends State<inscription> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    onChanged: ((value) {
+                      nom = value;
+                    }),
                     decoration: InputDecoration(
                         filled: true,
                         border: OutlineInputBorder(
@@ -47,6 +60,9 @@ class inscriptionState extends State<inscription> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    onChanged: ((value) {
+                      prenom = value;
+                    }),
                     decoration: InputDecoration(
                         filled: true,
                         border: OutlineInputBorder(
@@ -58,6 +74,9 @@ class inscriptionState extends State<inscription> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    onChanged: ((value) {
+                      mail = value;
+                    }),
                     decoration: InputDecoration(
                         filled: true,
                         border: OutlineInputBorder(
@@ -69,6 +88,23 @@ class inscriptionState extends State<inscription> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    onChanged: ((value) {
+                      tel = value;
+                    }),
+                    decoration: InputDecoration(
+                        filled: true,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        labelText: 'numéro de tel*',
+                        hintText: 'numéro est attendu'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextField(
+                    onChanged: ((value) {
+                      mdp = value;
+                    }),
                     obscureText: true,
                     decoration: InputDecoration(
                         filled: true,
@@ -81,6 +117,9 @@ class inscriptionState extends State<inscription> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextField(
+                    onChanged: ((value) {
+                      mdpconfirm = value;
+                    }),
                     obscureText: true,
                     decoration: InputDecoration(
                         filled: true,
@@ -90,6 +129,29 @@ class inscriptionState extends State<inscription> {
                         hintText: 'confirmez votre mot de passe'),
                   ),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(150, 60),
+                            maximumSize: const Size(200, 60),
+                            primary: Colors.green),
+                        onPressed: () {
+                          if (mdp == mdpconfirm) {
+                            print("ok");
+                            firebaseHelp().Inscription(nom, prenom, tel, mail, mdp);
+                            Navigator.push(context, MaterialPageRoute(builder:((context) {
+                              return acceuil();
+                            })));
+                          }
+                        },
+                        child: const Text(
+                          "Inscription",
+                          style: TextStyle(fontFamily: "GameOfSquids"),
+                        )),
+                  ],
+                )
               ],
             ),
           )),

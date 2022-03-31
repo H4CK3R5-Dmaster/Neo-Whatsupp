@@ -16,6 +16,7 @@ class users {
     nom = map["NOM"];
     prenom = map["PRENOM"];
     mail = map["MAIL"];
+    tel = map['TEL'];
     token = map["TOKEN"];
     avatar = map["AVATAR"];
   }
