@@ -140,10 +140,12 @@ class inscriptionState extends State<inscription> {
                         onPressed: () {
                           if (mdp == mdpconfirm) {
                             print("ok");
-                            firebaseHelp().Inscription(nom, prenom, tel, mail, mdp);
-                            Navigator.push(context, MaterialPageRoute(builder:((context) {
-                              return acceuil();
-                            })));
+                            firebaseHelp().Inscription(nom, prenom, tel, mail, mdp).then((value){
+                              Navigator.push(context, MaterialPageRoute(builder:((context) {
+                                return acceuil();
+                              })));
+                            });
+                            
                           }
                         },
                         child: const Text(

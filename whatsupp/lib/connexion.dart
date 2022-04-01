@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsupp/functions/firebaseHelp.dart';
 import 'package:whatsupp/acceuil.dart';
@@ -77,15 +80,21 @@ class connexionState extends State<connexion> {
                         onPressed: () {
                           
                             print("ok");
-                            firebaseHelp().Connexion(mail, mdp);
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: ((context) {
-                              return acceuil();
-                            })));
+                            firebaseHelp().Connexion(mail, mdp).then((value){
+                              firebaseHelp().reco();
+                              print("ok2");
+                                Navigator.push(context, MaterialPageRoute(builder: ((context) {
+                                  return acceuil();
+                                })));
+                            }).catchError((onError){
+                              Popup();
+                            });
+
+                            
                           
                         },
                         child: const Text(
-                          "Inscription",
+                          "Connexion",
                           style: TextStyle(fontFamily: "GameOfSquids"),
                         )),
                   ],
@@ -94,5 +103,27 @@ class connexionState extends State<connexion> {
             ),
           ),
         ));
+  }
+  Popup(){
+    showDialog(
+      context: context, 
+      builder: (context){
+        if(Platform.isIOS){
+          return CupertinoAlertDialog(
+            title: const Text("Erreur verifiez vos informations \ncode: ERROR_CREDENTIAL"),
+            actions: [
+              ElevatedButton(onPressed: (){Navigator.pop(context);}, child: const Text("OK"))
+            ],
+          );
+        } else {
+          return AlertDialog(
+            title: const Text("Erreur verifiez vos informations \ncode: ERROR_CREDENTIAL"),
+            actions: [
+              ElevatedButton(onPressed: (){Navigator.pop(context);}, child: const Text("OK"))
+            ],
+          );
+        }
+      }
+      );
   }
 }

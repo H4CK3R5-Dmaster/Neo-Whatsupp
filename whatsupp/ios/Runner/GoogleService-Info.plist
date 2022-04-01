@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>594857740621-u6fpuaokkavn6hralsd3l5e3ck22j2s2.apps.googleusercontent.com</string>
+	<string>643531564242-diajq5f0gu5fhaq31t1m3rdndbjdfed1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.594857740621-u6fpuaokkavn6hralsd3l5e3ck22j2s2</string>
+	<string>com.googleusercontent.apps.643531564242-diajq5f0gu5fhaq31t1m3rdndbjdfed1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAwCzdg6R9O6-gqxL2zdN3k6EysdqCeRFc</string>
+	<string>AIzaSyDOxqRGbC38rC8ndDCj4YBZFDS8qv2Crfw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>594857740621</string>
+	<string>643531564242</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.whatsupp</string>
 	<key>PROJECT_ID</key>
-	<string>neo-whatsupp</string>
+	<string>newneowhats</string>
 	<key>STORAGE_BUCKET</key>
-	<string>neo-whatsupp.appspot.com</string>
+	<string>newneowhats.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:594857740621:ios:b2e9224c24e79b134dcf04</string>
+	<string>1:643531564242:ios:95fe559e91d3dafa92f90b</string>
 </dict>
 </plist>

@@ -3,12 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:whatsupp/model/users.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 
 class firebaseHelp {
   final auth = FirebaseAuth.instance;
   final final_user = FirebaseFirestore.instance.collection("Users");
   final fireStorage = FirebaseStorage.instance;
-
+ 
   Future Inscription(String nom, String prenom, String tel, String mail,
       String password) async {
     UserCredential result = await auth.createUserWithEmailAndPassword(
@@ -34,6 +35,7 @@ class firebaseHelp {
   }
 
   addUser(String uid, Map<String, dynamic> map) {
+    
     final_user.doc(uid).set(map);
   }
 
@@ -45,9 +47,30 @@ class firebaseHelp {
     String uid = auth.currentUser!.uid;
     return uid;
   }
+  
 
   Future<users> getUtilisateur(String uid) async {
     DocumentSnapshot snapshot = await final_user.doc(uid).get();
     return users(snapshot);
   }
+  deco() async{
+    String getuid = auth.currentUser!.uid;
+    Map<String, dynamic> map = {
+      
+      "isConnected": false
+    };
+    var collection = FirebaseFirestore.instance.collection('Users');
+    await collection.doc(getuid).update(map);
+  }
+  reco() async{
+    String getuid = auth.currentUser!.uid;
+    Map<String, dynamic> map = {
+      
+      "isConnected": true
+    };
+    var collection = FirebaseFirestore.instance.collection('Users');
+    await collection.doc(getuid).update(map);
+  }
+
+  
 }

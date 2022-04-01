@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "594857740621",
-    "project_id": "neo-whatsupp",
-    "storage_bucket": "neo-whatsupp.appspot.com"
+    "project_number": "643531564242",
+    "project_id": "newneowhats",
+    "storage_bucket": "newneowhats.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:594857740621:android:09eda345076af9734dcf04",
+        "mobilesdk_app_id": "1:643531564242:android:4c1b108794a078fa92f90b",
         "android_client_info": {
           "package_name": "com.example.whatsupp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "594857740621-tt00h1448hf4t76v3iafd3fagravof35.apps.googleusercontent.com",
+          "client_id": "643531564242-rl9oi7guelvho63flg7k4aggqdhnsbv9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBs-LyrUW33rRkap9kZPR1Qc6B0vPEX-2k"
+          "current_key": "AIzaSyB3bYQwkrKwT1XRmuCrfoZPKCSgbRn3NPs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "594857740621-tt00h1448hf4t76v3iafd3fagravof35.apps.googleusercontent.com",
+              "client_id": "643531564242-rl9oi7guelvho63flg7k4aggqdhnsbv9.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "643531564242-diajq5f0gu5fhaq31t1m3rdndbjdfed1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.whatsupp"
+              }
             }
           ]
         }
