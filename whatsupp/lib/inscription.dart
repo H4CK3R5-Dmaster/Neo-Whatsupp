@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsupp/acceuil.dart';
+import 'package:whatsupp/connexion.dart';
 import 'package:whatsupp/functions/firebaseHelp.dart';
 
 
@@ -153,6 +154,14 @@ class inscriptionState extends State<inscription> {
                           style: TextStyle(fontFamily: "GameOfSquids"),
                         )),
                   ],
+                ),
+                InkWell(
+                  child: const Text("j'ai un compte!", style: TextStyle(color: Colors.blue, fontFamily: "GameOfSquids"),textAlign: TextAlign.center),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return connexion();
+                    }));
+                  },
                 )
               ],
             ),

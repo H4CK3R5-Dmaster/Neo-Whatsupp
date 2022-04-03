@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -71,6 +73,36 @@ class firebaseHelp {
     var collection = FirebaseFirestore.instance.collection('Users');
     await collection.doc(getuid).update(map);
   }
-
+  getdoc() async {
+    final gotcha = FirebaseFirestore.instance.collection("Users").get();
+    QuerySnapshot querySnapshot = await gotcha;
+    for (var i = 0; i < querySnapshot.docs.length; i++) {
+      var a = querySnapshot.docs[i];
+      print("documents = "+a.id);
+      
+    }
+    // var det = querySnapshot.docs.forEach((element) {
+    //   var f = element["TEL"];
+    //   for (var i = 0; i < element["TEL"].toString().length; i++) {
+    //     print(element["TEL"].toString());
+    //   }
+    // });
+     var data = querySnapshot.docs.forEach((doc) {
+       
+       print(doc["TEL"]);
+       for (var i = 0; i < 4; i++) {
+         print("$i = ${doc["TEL"]}");
+       }
+       
+       
+      
+     });
+    
+     
+      
+      
+    
+    
+  }
   
 }

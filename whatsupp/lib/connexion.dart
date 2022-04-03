@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsupp/functions/firebaseHelp.dart';
 import 'package:whatsupp/acceuil.dart';
+import 'package:whatsupp/inscription.dart';
 
 class connexion extends StatefulWidget {
   @override
@@ -98,6 +99,14 @@ class connexionState extends State<connexion> {
                           style: TextStyle(fontFamily: "GameOfSquids"),
                         )),
                   ],
+                ),
+                InkWell(
+                  child: const Text("je n'ai pas de compte!", style: TextStyle(color: Colors.blue, fontFamily: "GameOfSquids"),textAlign: TextAlign.center),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return inscription();
+                    }));
+                  },
                 )
               ],
             ),

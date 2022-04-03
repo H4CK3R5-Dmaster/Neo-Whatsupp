@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/contact.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
+import 'package:whatsupp/functions/firebaseHelp.dart';
 
 class FlutterContactsExample extends StatefulWidget {
   @override
@@ -19,10 +20,10 @@ class _FlutterContactsExampleState extends State<FlutterContactsExample> {
   }
   
   Future _fetchContacts() async {
-    if (!await FlutterContacts.requestPermission(readonly: true)) {
+    if (!await FlutterContacts.requestPermission()) {
       setState(() => _permissionDenied = true);
     } else {
-      final contacts = await FlutterContacts.getContacts();
+      final contacts = await FlutterContacts.getContacts(withProperties: true);
       setState(() => _contacts = contacts);
     }
   }
@@ -42,18 +43,31 @@ class _FlutterContactsExampleState extends State<FlutterContactsExample> {
   }
 
   Widget _body() {
+    
     if (_permissionDenied) return Center(child: Text('Permission denied'));
     if (_contacts == null) return Center(child: CircularProgressIndicator());
-    return ListView.builder(
+    firebaseHelp().getdoc();
+    
+    
+      return ListView.builder(
         itemCount: _contacts!.length,
         itemBuilder: (context, i) => ListTile(
             title: Text(_contacts![i].displayName),
             onTap: () async {
-              final fullContact =
-                  await FlutterContacts.getContact(_contacts![i].id);
-              await Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => ContactPage(fullContact!)));
+              final fullContact = await FlutterContacts.getContact(_contacts![i].id);
+                  // if (_contacts![i].phones.first.number == firebaseHelp().getdoc()) {
+                  //   print("ok");
+                  //   Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (_) => ContactPage(fullContact!)));
+                  // } else {
+                  //   print("nope");
+                  // }
+                  print(_contacts![i].phones.first.number);
+              
             }));
+    
+    
+    
   }
 }
 class ContactPage extends StatelessWidget {
@@ -84,3 +98,11 @@ class ContactPage extends StatelessWidget {
   }
       
 }
+
+// appBar: AppBar(
+        
+//         backgroundColor: Colors.green[400],
+//         title:
+//             Text(contact.name.first, style: TextStyle(fontFamily: 'GameOfSquids')),
+//         centerTitle: true,
+//       ),
