@@ -1,9 +1,14 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:whatsupp/connexion.dart';
+import 'package:whatsupp/drawer/draweracceuil.dart';
+import 'package:whatsupp/model/users.dart';
 import 'package:whatsupp/fullcontact.dart';
 import 'package:whatsupp/functions/firebaseHelp.dart';
-import 'package:path/path.dart' as Path;
+
 class acceuil extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -12,14 +17,17 @@ class acceuil extends StatefulWidget {
 }
 
 class acceuilState extends State<acceuil> {
-  GlobalKey<ScaffoldState> key = GlobalKey();
+  
+  
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: key,
-      drawer: draw(),
+      
+      drawer: draweracceuil(),
       appBar: AppBar(
-        leading: Container(),
+        
         backgroundColor: Colors.green[400],
         title:
             const Text("Acceuil", style: TextStyle(fontFamily: 'GameOfSquids')),
@@ -56,47 +64,20 @@ class acceuilState extends State<acceuil> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              IconButton(
-                  onPressed: () {
-                    // Scaffold.of(context).openDrawer();
-                    key.currentState!.openDrawer();
-                  },
-                  icon: Icon(Icons.menu)),
+              
               IconButton(onPressed: () {}, icon: Icon(Icons.home))
             ],
           )),
     );
+    
+    
+
   }
-  Widget draw() {
-  return Drawer(
-    child: Column(
-      children: [
-        const SizedBox(
-          height: 70,
-        ),
-        InkWell(
-          child: Row(
-            children: const [
-              Icon(Icons.logout),
-              Text(
-                "Déconnexion",
-                style: TextStyle(fontFamily: "GameOfSquids", color: Colors.red),
-              ),
-            ],
-          ),
-          onTap: () {
-            print("OK");
-            firebaseHelp().deco().then((value){
-              print("ok333333");
-              Navigator.of(context).push( MaterialPageRoute(
-                  builder: (_) => connexion()));
-            });
-          },
-        )
-      ],
-    ),
-  );
-}
+  
+
+  
+  
+
+   
 
 }
-
