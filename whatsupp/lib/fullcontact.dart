@@ -99,13 +99,11 @@ class _FlutterContactsExampleState extends State<FlutterContactsExample> {
 }
 
 class ContactPage extends StatelessWidget {
-  
   final Contact contact;
   ContactPage(this.contact);
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[400],
@@ -114,49 +112,44 @@ class ContactPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(100,10, 25, 80),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 70,
+          child: Padding(
+        padding: EdgeInsets.fromLTRB(100, 10, 25, 80),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 70,
+            ),
+            Container(
+              child: const DecoratedBox(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg"),
+                        fit: BoxFit.cover)),
               ),
               
-              const DecoratedBox(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'),
-                          fit: BoxFit.cover
-                    
-                  )
-                ),
-              ),
-              Text(
-                'prenom: ${contact.name.first}',
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'nom: ${contact.name.last}',
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'numero: ${contact.phones.isNotEmpty ? contact.phones.first.number : '(pas de numero)'}',
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'adresse email: ${contact.emails.isNotEmpty ? contact.emails.first.address : '(pas d\'email)'}',
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        )
-          
-        
-      ),
+            ),
+            Text(
+              'prenom: ${contact.name.first}',
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'nom: ${contact.name.last}',
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'numero: ${contact.phones.isNotEmpty ? contact.phones.first.number : '(pas de numero)'}',
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'adresse email: ${contact.emails.isNotEmpty ? contact.emails.first.address : '(pas d\'email)'}',
+              textAlign: TextAlign.center,
+            ),
+            
+          ],
+        ),
+      )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
           color: Colors.green,
