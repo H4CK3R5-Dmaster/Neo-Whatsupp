@@ -111,45 +111,56 @@ class ContactPage extends StatelessWidget {
             style: TextStyle(fontFamily: 'GameOfSquids')),
         centerTitle: true,
       ),
-      body: Container(
-          child: Padding(
-        padding: EdgeInsets.fromLTRB(100, 10, 25, 80),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 70,
-            ),
-            Container(
-              child: const DecoratedBox(
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg"),
-                        fit: BoxFit.cover)),
+      body: Stack(
+        children: [
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Container(
+              padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+              height: 60,
+              width: double.infinity,
+              color: Colors.white,
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 15,),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Ecrire un message...",
+                        hintStyle: TextStyle(color: Colors.black54),
+                        border: InputBorder.none
+                      ),
+                    )
+                    ),
+                    SizedBox(width: 15,),
+                    FloatingActionButton(
+                      onPressed: () {print("envoyer!");},
+                      child: Icon(Icons.send, color: Colors.white,size: 18,),
+                      backgroundColor: Colors.green,
+                      elevation: 0,
+                      )
+
+                ],
               ),
-              
             ),
-            Text(
-              'prenom: ${contact.name.first}',
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'nom: ${contact.name.last}',
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'numero: ${contact.phones.isNotEmpty ? contact.phones.first.number : '(pas de numero)'}',
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'adresse email: ${contact.emails.isNotEmpty ? contact.emails.first.address : '(pas d\'email)'}',
-              textAlign: TextAlign.center,
-            ),
-            
-          ],
-        ),
-      )),
+          )
+        ],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
           color: Colors.green,
