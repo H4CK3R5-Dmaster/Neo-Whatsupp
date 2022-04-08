@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/contact.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
+import 'package:whatsupp/acceuil.dart';
 import 'package:whatsupp/drawer/draweracceuil.dart';
 import 'package:whatsupp/functions/firebaseHelp.dart';
+import 'package:whatsupp/notfoundaccount.dart';
 
 import 'model/users.dart';
 
@@ -47,7 +49,10 @@ class _FlutterContactsExampleState extends State<FlutterContactsExample> {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [IconButton(onPressed: () {}, icon: Icon(Icons.home))],
+            children: [IconButton(onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => acceuil()));
+            }, icon: Icon(Icons.home))],
           )),
     );
   }
@@ -82,13 +87,15 @@ class _FlutterContactsExampleState extends State<FlutterContactsExample> {
                     var yes = await firebaseHelp().getdoc(lol);
 
                     if (yes == false) {
-                      print("false");
+                       Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => notfoundaccount()));
                     }
                     if (yes == nuf) {
                       print("ok");
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (_) => ContactPage(fullContact!)));
                     }
+                    lol.clear();
 
                     // print("ok");
                     // Navigator.of(context).push(
@@ -167,11 +174,15 @@ class ContactPage extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [IconButton(onPressed: () {}, icon: Icon(Icons.home))],
+            children: [IconButton(onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => acceuil()));
+            }, icon: Icon(Icons.home))],
           )),
     );
   }
 }
+
 
 // appBar: AppBar(
         
