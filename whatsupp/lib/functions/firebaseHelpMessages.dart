@@ -23,8 +23,8 @@ class firebaseHelpMessages {
     coll.doc(uid).set(map);
   }
 
-  Future <String> getId() async{
-    String uid = coll.doc().id;
+  String getId() {
+    var uid = coll.doc().id;
     return uid;
   }
 

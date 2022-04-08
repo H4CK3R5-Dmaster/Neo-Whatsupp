@@ -4,6 +4,7 @@ import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:whatsupp/acceuil.dart';
 import 'package:whatsupp/drawer/draweracceuil.dart';
 import 'package:whatsupp/functions/firebaseHelp.dart';
+import 'package:whatsupp/functions/firebaseHelpMessages.dart';
 import 'package:whatsupp/notfoundaccount.dart';
 
 import 'model/users.dart';
@@ -107,10 +108,12 @@ class _FlutterContactsExampleState extends State<FlutterContactsExample> {
 
 class ContactPage extends StatelessWidget {
   final Contact contact;
+  late String contenu = '';
   ContactPage(this.contact);
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[400],
@@ -123,7 +126,7 @@ class ContactPage extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Container(
-              padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+              padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
               height: 60,
               width: double.infinity,
               color: Colors.white,
@@ -137,26 +140,42 @@ class ContactPage extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(30)),
-                      child: Icon(
+                      child: const Icon(
                         Icons.add,
                         color: Colors.white,
                         size: 20,
                       ),
                     ),
                   ),
-                  SizedBox(width: 15,),
+                  const SizedBox(width: 15,),
                   Expanded(
                     child: TextField(
-                      decoration: InputDecoration(
+                      onChanged: ((value) {
+                      contenu = value;
+                      
+                    }),
+                    
+                      decoration: const InputDecoration(
                         hintText: "Ecrire un message...",
                         hintStyle: TextStyle(color: Colors.black54),
                         border: InputBorder.none
+                        
                       ),
                     )
                     ),
                     SizedBox(width: 15,),
                     FloatingActionButton(
-                      onPressed: () {print("envoyer!");},
+                      onPressed: () async {
+                        print("envoyer!");
+                        late var uid = '';
+                        firebaseHelp().getIdentifiant().then((value) {
+                          uid = value;
+                        });
+                        print(uid);
+                        var phone = await contact.phones.first.number;
+                        firebaseHelpMessages().addToDatabase(phone, uid, contenu);
+                        
+                      },
                       child: Icon(Icons.send, color: Colors.white,size: 18,),
                       backgroundColor: Colors.green,
                       elevation: 0,
@@ -184,10 +203,3 @@ class ContactPage extends StatelessWidget {
 }
 
 
-// appBar: AppBar(
-        
-//         backgroundColor: Colors.green[400],
-//         title:
-//             Text(contact.name.first, style: TextStyle(fontFamily: 'GameOfSquids')),
-//         centerTitle: true,
-//       ),
